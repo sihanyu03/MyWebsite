@@ -1,0 +1,177 @@
+<div id="sudoku-app" style="max-width: 520px;">
+  <div style="margin-bottom: 12px; display:flex; gap: 10px; flex-wrap: wrap;">
+    <button id="sudoku-solve" type="button"
+      style="
+        padding: 6px 14px;
+        border: 2px solid rgba(60,60,60,0.85);
+        border-radius: 6px;
+        background: transparent;
+        cursor: pointer;
+        font-weight: 500;
+      ">
+      Solve
+    </button>
+
+    <button id="sudoku-clear" type="button"
+      style="
+        padding: 6px 14px;
+        border: 2px solid rgba(60,60,60,0.85);
+        border-radius: 6px;
+        background: transparent;
+        cursor: pointer;
+        font-weight: 500;
+      ">
+      Clear
+    </button>
+  </div>
+
+  <div id="sudoku-grid" style="display:grid; grid-template-columns: repeat(9, 1fr); gap: 0; border: 3px solid rgba(60,60,60,0.85); width: 100%;"></div>
+
+  <p id="sudoku-status" style="margin-top: 10px; opacity: 0.85;"></p>
+</div>
+
+<script type="module">
+  import createModule from "{{ "sudoku/sudoku.js" | absURL }}";
+
+  const gridEl = document.getElementById("sudoku-grid");
+  const statusEl = document.getElementById("sudoku-status");
+  const solveBtn = document.getElementById("sudoku-solve");
+  const clearBtn = document.getElementById("sudoku-clear");
+
+  const cells = [];
+  for (let i = 0; i < 81; i++) {
+    const inp = document.createElement("input");
+    inp.type = "text";
+    inp.inputMode = "numeric";
+    inp.maxLength = 1;
+    inp.autocomplete = "off";
+    inp.spellcheck = false;
+
+    inp.style.width = "100%";
+    inp.style.textAlign = "center";
+    inp.style.padding = "0";
+    inp.style.margin = "0";
+    inp.style.boxSizing = "border-box";
+    inp.style.color = "#000";
+    inp.style.aspectRatio = "1 / 1";
+    inp.style.height = "100%";
+    inp.style.fontSize = "18px";
+    inp.style.lineHeight = "1";
+
+    const r = Math.floor(i / 9);
+    const c = i % 9;
+
+    const topW = (r % 3 === 0) ? "3px" : "1px";
+    const leftW = (c % 3 === 0) ? "3px" : "1px";
+    const bottomW = (r === 8) ? "3px" : ((r % 3 === 2) ? "3px" : "1px");
+    const rightW = (c === 8) ? "3px" : ((c % 3 === 2) ? "3px" : "1px");
+
+    inp.style.borderTop = `${topW} solid rgba(60,60,60,0.85)`;
+    inp.style.borderLeft = `${leftW} solid rgba(60,60,60,0.85)`;
+    inp.style.borderBottom = `${bottomW} solid rgba(60,60,60,0.85)`;
+    inp.style.borderRight = `${rightW} solid rgba(60,60,60,0.85)`;
+
+    inp.style.borderRadius = "0";
+
+    inp.addEventListener("input", () => {
+      const v = inp.value.trim();
+      if (v === "") return;
+      if (!/^[1-9]$/.test(v)) inp.value = "";
+    });
+
+    gridEl.appendChild(inp);
+    cells.push(inp);
+  }
+
+  function validateCells() {
+    for (const inp of cells) {
+      const v = inp.value.trim();
+      if (v === "") continue;
+      if (!/^[1-9]$/.test(v)) return false;
+    }
+    return true;
+  }
+
+  function readPuzzle81() {
+    let s = "";
+    for (const inp of cells) {
+      const v = inp.value.trim();
+      s += (v === "") ? "-" : v;
+    }
+    return s;
+  }
+
+  function writePuzzle81(s) {
+    if (!s || s.length !== 81) return;
+    for (let i = 0; i < 81; i++) {
+      const ch = s[i];
+      cells[i].value = (ch === "-") ? "" : ch;
+    }
+  }
+
+  // Load the WASM module once.
+  statusEl.textContent = "Loading solver…";
+  const wasmURL = "{{ "sudoku/sudoku.wasm" | absURL }}";
+  const Module = await createModule({
+    locateFile: (path) => (path.endsWith(".wasm") ? wasmURL : path),
+  });
+  statusEl.textContent = "";
+
+  clearBtn.addEventListener("click", () => {
+    for (const inp of cells) inp.value = "";
+    statusEl.textContent = "";
+  });
+
+  solveBtn.addEventListener("click", () => {
+    if (!validateCells()) {
+      statusEl.textContent = "Please use only digits 1–9 or leave cells empty.";
+      return;
+    }
+
+    const puzzle = readPuzzle81();
+
+    const outPtr = Module._malloc(82);
+    try {
+      const code = Module.ccall(
+        "solve_sudoku_81",
+        "number",
+        ["string", "number"],
+        [puzzle, outPtr]
+      );
+
+      const solved = Module.UTF8ToString(outPtr);
+
+      if (solved && solved.length === 81) {
+        writePuzzle81(solved);
+      }
+
+      // Return codes:
+      // 0 -> success, no additional text
+      // 1 -> multiple solutions message
+      // -1 -> no answer found
+      // -3/-4 -> internal error with code
+      // else -> generic code message
+      if (!solved || solved.length !== 81) {
+        statusEl.textContent = (code === -1)
+          ? "Unsolvable board."
+          : (code === -3 || code === -4)
+            ? `Internal error (code ${code}).`
+            : `Internal error (code ${code}).`;
+      } else if (code === 0) {
+        statusEl.textContent = "";
+      } else if (code === 1) {
+        statusEl.textContent = "More than one possible solution, displaying one of them.";
+      } else if (code === -1) {
+        statusEl.textContent = "No answer found.";
+      } else if (code === -3 || code === -4) {
+        statusEl.textContent = `Internal error (code ${code}).`;
+      } else {
+        statusEl.textContent = `Solver returned code ${code}.`;
+      }
+    } catch (e) {
+      statusEl.textContent = "Error running solver.";
+    } finally {
+      Module._free(outPtr);
+    }
+  });
+</script>

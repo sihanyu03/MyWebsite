@@ -1,0 +1,56 @@
+[[main]]
+    name = "About"
+    pageRef = "about"
+    weight = 1
+[[main]]
+    name = "Projects"
+    pageRef = "projects"
+    weight = 2
+[[main]]
+    name = "[Masters Project] GPU-Optimised Linear Algebra for Small Matrices"
+    parent = "Projects"
+    pageRef = "projects/masters_project"
+    weight = 3
+[[main]]
+    name = "Email Sending Automation"
+    parent = "Projects"
+    pageRef = "projects/event_manager"
+    weight = 4
+[[main]]
+    name = "Sudoku Solver"
+    parent = "Projects"
+    pageRef = "projects/sudoku_solver"
+    weight = 5
+[[main]]
+    name = "AI Snake Game Bot"
+    parent = "Projects"
+    pageRef = "projects/snake_game_ai"
+    weight = 6
+[[main]]
+    name = "News Articles"
+    pageRef = "news_articles"
+    weight = 7
+[[main]]
+    name = "Kaleva: International Olympiad Medalist"
+    parent = "News Articles"
+    pageRef = "news_articles/international_olympiad_medalist"
+    weight = 8
+[[main]]
+    name = "Kaleva: National Science Olympiads"
+    parent = "News Articles"
+    pageRef = "news_articles/neljan_tieteen_kisat"
+    weight = 9
+[[main]]
+    name = "Achievements"
+    pageRef = "achievements"
+    weight = 10
+[[main]]
+    pre = "linkedin"
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/sihan-yu-110903238/"
+    weight = 11
+[[main]]
+    pre = "github"
+    name = "GitHub"
+    url = "https://github.com/sihanyu03/"
+    weight = 12

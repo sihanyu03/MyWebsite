@@ -1,0 +1,8 @@
+theme = "blowfish"
+baseURL = 'https://sihanyu03.github.io/MyWebsite/'
+languageCode = 'en-gb'
+title = 'Sihan Yu'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
