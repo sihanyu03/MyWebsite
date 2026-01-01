@@ -4,7 +4,7 @@ draft = false
 title = 'Sudoku Solver'
 +++
 
-Repo: [Github – SudokuSolver](https://github.com/sihanyu03/SudokuSolver)
+Repo: {{< tracklink href="https://github.com/sihanyu03/SudokuSolver" event="github-sudokusolver" target="_blank" >}}Github – SudokuSolver{{< /tracklink >}}
 
 I built a highly-optimised, blazingly fast Sudoku solver in C++. Try it out yourself below:
 

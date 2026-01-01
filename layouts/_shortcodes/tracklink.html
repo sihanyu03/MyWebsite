@@ -1,0 +1,6 @@
+<a href="{{ .Get "href" }}"
+   data-goatcounter-click="{{ .Get "event" }}"
+   {{ with .Get "target" }}target="{{ . }}"{{ end }}
+   {{ if .Get "target" }}rel="noopener noreferrer"{{ end }}>
+  {{ .Inner | markdownify }}
+</a>

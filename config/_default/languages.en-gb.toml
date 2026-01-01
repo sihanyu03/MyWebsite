@@ -3,7 +3,7 @@ title = "Sihan Yu - Personal Website"
 [params.author]
 name = "Sihan Yu"
 image = "img/author.jpg"
-headline = "Information & computer engineering student | Incoming software engineer"
+headline = "Information & Computer Engineering Student | Software Engineer (starting 2026)"
 # bio = "This is the bio"
 links = [
   { linkedin = "https://www.linkedin.com/in/sihan-yu-110903238/" },

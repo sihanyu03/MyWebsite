@@ -4,7 +4,7 @@ draft = false
 title = 'Email Sending Automation'
 +++
 
-Repo: [Github – EventManager](https://github.com/sihanyu03/EventManager)
+Repo: {{< tracklink href="https://github.com/sihanyu03/EventManager" event="github-eventmanager" target="_blank" >}}Github – EventManager{{< /tracklink >}}
 
 
 # The Problem

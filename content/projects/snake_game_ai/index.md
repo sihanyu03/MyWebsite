@@ -4,7 +4,7 @@ draft = false
 title = 'AI Snake Game Bot'
 +++
 
-Repo: [Github – SnakeGameAI](https://github.com/sihanyu03/SnakeGameAI)
+Repo: {{< tracklink href="https://github.com/sihanyu03/SnakeGameAI" event="github-snakegameai" target="_blank" >}}Github – SnakeGameAI{{< /tracklink >}}
 
 I built a simple snake game and trained an AI to play it using NEAT (NeuroEvolution of
 Augmenting Topologies) machine learning. Demo below:

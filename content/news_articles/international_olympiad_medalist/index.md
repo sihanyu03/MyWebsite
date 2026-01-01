@@ -4,4 +4,4 @@ draft = false
 title = 'Kaleva: International Chemistry Olympiad'
 +++
 
-Read it [here](https://www.kaleva.fi/oululainen-sihan-yu-sai-pronssia-kansainvalisissa-/4785029).
+Read it {{< tracklink href="https://www.kaleva.fi/oululainen-sihan-yu-sai-pronssia-kansainvalisissa-/4785029" event="kaleva-international-olympiad" target="_blank" >}}here{{< /tracklink >}}.
