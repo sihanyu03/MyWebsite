@@ -5,7 +5,7 @@ title = '[Masters Project] GPU-Optimised Linear Algebra for Small Matrices'
 featuredImage = "thumb.png"
 +++
 
-Repo: {{< tracklink href="https://github.com/THargreaves/BatchedKernels.jl" event="github-batchedkernels" target="_blank" >}}Github – BatchedKernels.jl{{< /tracklink >}}
+Repo (not public yet): {{< tracklink href="https://github.com/THargreaves/BatchedKernels.jl" event="github-batchedkernels" target="_blank" >}}Github – BatchedKernels.jl{{< /tracklink >}}
 
 My master's project focuses on accelerating linear algebra operations on large batches
 of small matrices using GPUs. This implementation outperforms state-of-the-art

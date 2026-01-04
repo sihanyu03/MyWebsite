@@ -27,10 +27,10 @@ A selection of academic achievements and extracurricular roles:
 
 ## University Roles
 
-- President - Cambridge University International Students' Association
-- Treasurer - Cambridge University International Students' Association
-- Project Leader - 180 Degrees Consulting Cambridge
-- IT Officer - Cambridge University Swimming & Water Polo Club
-- Captain - Christ's College Table Tennis Club
-- Vice President - Christ's College Engineering Society
-- Logistics Officer - Christ's College May Ball
+- President - Cambridge University International Students' Association (2024-25)
+- Treasurer - Cambridge University International Students' Association (2023-24)
+- Project Leader - 180 Degrees Consulting Cambridge (2024)
+- IT Officer - Cambridge University Swimming & Water Polo Club(2023-24)
+- Captain - Christ's College Table Tennis Club (2023-24)
+- Vice President - Christ's College Engineering Society (2023-24)
+- Logistics Officer - Christ's College May Ball (2023-24)
