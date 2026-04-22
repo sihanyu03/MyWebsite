@@ -1,0 +1,10 @@
+enableSearch = false
+
+[footer]
+    showThemeAttribution = false
+
+customCSS = ["css/custom.css"]
+
+[homepage]
+    layout = "background"
+    homepageImage = "img/background.jpg"

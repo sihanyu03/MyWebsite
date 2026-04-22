@@ -1,0 +1,46 @@
+#[[main]]
+#    name = "About"
+#    pageRef = "about"
+#    weight = 1
+[[main]]
+    name = "Projects"
+    pageRef = "projects"
+    weight = 2
+[[main]]
+    name = "[Masters Project] GPU-Optimised Linear Algebra for Small Matrices"
+    parent = "Projects"
+    pageRef = "projects/masters_project"
+    weight = 3
+[[main]]
+    name = "Email Sending Automation"
+    parent = "Projects"
+    pageRef = "projects/event_manager"
+    weight = 4
+[[main]]
+    name = "Sudoku Solver"
+    parent = "Projects"
+    pageRef = "projects/sudoku_solver"
+    weight = 5
+[[main]]
+    name = "AI Snake Game Bot"
+    parent = "Projects"
+    pageRef = "projects/snake_game_ai"
+    weight = 6
+#[[main]]
+#    name = "Blog"
+#    pageRef = "blog"
+#    weight = 7
+[[main]]
+    name = "Experience"
+    pageRef = "experience"
+    weight = 10
+[[main]]
+    pre = "linkedin"
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/sihan-yu-110903238/"
+    weight = 11
+[[main]]
+    pre = "github"
+    name = "GitHub"
+    url = "https://github.com/sihanyu03/"
+    weight = 12
